@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     const days = (req.body?.days || '').toString().trim();
     const isTrial = (req.body?.type || 'paid').toString() === 'trial';
     const expiresAt = !days || days === '0' ? null : new Date(Date.now() + parseInt(days, 10) * 86400000).toISOString();
-    const key = generateLicenseKey(isTrial ? 'TRL' : 'LIC');
+    const key = generateLicenseKey(isTrial ? 'TRL' : 'BKS');
 
     const { error } = await supabaseAdmin.from('licenses').insert({
       license_key: key,
